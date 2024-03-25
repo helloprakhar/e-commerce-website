@@ -1,0 +1,40 @@
+<div class="global">
+  <div class="center">
+    <div class="form">
+      <form [formGroup]="categoryForm">
+        <h1>Category✏️</h1>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput formControlName="name"/>
+            <mat-error *ngIf="categoryForm.get('name').invalid && categoryForm.get('name').touched">
+              Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Category Type</mat-label>
+            <input type="text" matInput formControlName="categoryType" />
+            <mat-error *ngIf="categoryForm.get('categoryType').invalid && categoryForm.get('categoryType').touched">
+              Type is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <button
+            type="button"
+            mat-raised-button
+            color="accent"
+            (click)="onSubmit()"
+            [disabled]="categoryForm.invalid"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

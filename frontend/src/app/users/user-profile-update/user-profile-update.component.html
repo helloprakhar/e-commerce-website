@@ -1,0 +1,58 @@
+<div class="global">
+  <div class="center">
+    <div class="form">
+      <form [formGroup]="userForm">
+        <h1>User Profile Update✏️</h1>
+        <div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input
+              type="text"
+              formControlName="name"
+              placeholder="Ex. Prakhar"
+              matInput
+            />
+            <mat-error *ngIf="userForm.get('name').invalid && userForm.get('name').dirty">Name is required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="Ex. Prakhar@example.com"
+              matInput
+            />
+            <mat-error *ngIf="userForm.get('email').invalid && userForm.get('email').dirty">Invalid email format</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Address</mat-label>
+            <input
+              type="text"
+              formControlName="address"
+              placeholder="Ex. Jhansi"
+              matInput
+            />
+            <mat-error *ngIf="userForm.get('address').invalid && userForm.get('address').dirty">Address is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <button
+            type="button"
+            mat-raised-button
+            (click)="onSubmit()"
+            color="accent"
+            [disabled]="userForm.invalid"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

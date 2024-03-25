@@ -1,0 +1,52 @@
+<div class="global">
+  <div class="center">
+    <div class="form">
+      <form [formGroup]="loginForm">
+        <h1>Login🖊️</h1>
+        <div *ngIf="isSubmitted && authError">
+          <span class="err">{{ authError }}</span>
+        </div>
+
+        <div>
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" formControlName="email" placeholder="*email@gmail.com" />
+            <mat-error *ngIf="loginForm.get('email').hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="loginForm.get('email').hasError('email')">Invalid email format</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              [type]="hide ? 'password' : 'text'"
+              formControlName="password"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+            <mat-error *ngIf="loginForm.get('password').hasError('required')">Password is required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="btn">
+          <button mat-raised-button color="accent" (click)="onSubmit()" [disabled]="loginForm.invalid">
+            Sign In
+          </button>
+        </div>
+
+        <div class="links">
+          <a routerLink="/users/register">No account? Create one here!</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

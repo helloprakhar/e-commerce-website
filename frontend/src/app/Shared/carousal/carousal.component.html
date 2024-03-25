@@ -1,0 +1,14 @@
+<div class="carousel">
+  <div class="carousel-image">
+    <img [src]="images[currentImageIndex]" alt="Carousel Image" />
+  </div>
+  <div class="carousel-controls">
+    <button mat-icon-button (click)="showPrevImage()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="showNextImage()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</div>

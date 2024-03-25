@@ -1,0 +1,71 @@
+<header class="navbar">
+  <div class="navbar-brand">
+    <h2 class="logo">
+      <a routerLink="/"><mat-icon>shopping_cart</mat-icon>ColoShop</a>
+    </h2>
+  </div>
+
+  <input type="checkbox" id="navbar-toggle" class="navbar-toggle" />
+  <label for="navbar-toggle" class="navbar-toggle-label">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
+  <nav class="navbar-menu">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a routerLink="/" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/new-arrival" class="nav-link">New Arrival</a>
+      </li>
+      <li class="nav-item" *ngIf="userIsAdmin">
+        <a routerLink="/categories/list" class="nav-link">Categories</a>
+      </li>
+      <li class="nav-item" *ngIf="userIsAdmin">
+        <a routerLink="/users/list" class="nav-link">Users</a>
+      </li>
+      <li class="nav-item" *ngIf="userIsAdmin">
+        <a routerLink="/items/list" class="nav-link">Items</a>
+      </li>
+      <li class="nav-item" *ngIf="userIsAdmin">
+        <a routerLink="cart/admin" class="nav-link">Orders</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="navbar-auth">
+    <a routerLink="/users/login" *ngIf="!getLoggedStatus()" class="nav-link"
+      >Login</a
+    >
+    <a routerLink="/users/register" *ngIf="!getLoggedStatus()" class="nav-link"
+      >Register</a
+    >
+    <a
+      routerLink="/users/login"
+      (click)="logout()"
+      *ngIf="getLoggedStatus()"
+      class="nav-link"
+      >Logout</a
+    >
+    <ng-container matColumnDef="delete">
+      <span *ngIf="getLoggedStatus()" class="nav-link" (click)="openUserProfile(user)" class="nav-link user-profile">
+        <mat-icon>account_circle</mat-icon>
+        {{ userName }} 
+        <span *ngIf="userIsAdmin" class="admin-badge"> (Admin)<mat-icon>verified_user</mat-icon></span>
+      </span>
+    </ng-container>
+  </div>
+
+  <div class="navbar-cart">
+    <a routerLink="/cart" class="nav-link">
+      <img src="assets/images/cart.png" height="30px" width="30px" alt="Cart" />
+      <span
+        class="cart-badge"
+        [matBadge]="cartCount"
+        matBadgeColor="warn"
+      ></span>
+    </a>
+  </div>
+</header>

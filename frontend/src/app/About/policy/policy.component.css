@@ -1,0 +1,53 @@
+.back{
+    margin-top: 100px;
+    margin-left: 10px;
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+  }
+  
+  .content {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0px 20px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .paragraph {
+    margin-bottom: 20px;
+  }
+  
+  /* Media queries for responsive layout */
+  
+  @media (max-width: 767px) {
+    .container {
+      padding: 10px;
+    }
+    .back {
+      margin-top: 180px;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+    .container {
+      padding: 20px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .container {
+      padding: 30px;
+      margin-bottom: 20px;
+    }
+  }
+  

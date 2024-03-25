@@ -1,0 +1,77 @@
+<button class="back" mat-raised-button color="primary" (click)="backToShop()">
+  <mat-icon>keyboard_return</mat-icon>Back To Shop
+</button>
+
+<div class="shipping-banner">
+  <h1 class="centered">
+    <h2>Hello, {{ userName }}!</h2>
+    We offer free shipping only this month!
+  </h1>
+  <div *ngIf="cartItemDetailed.length === 0">You have 0 items in your cart</div>
+  <div *ngIf="cartItemDetailed.length > 0">
+    You have {{ cartItemDetailed.length }} item(s) in your cart
+  </div>
+</div>
+
+<div class="global">
+  <h2>Cart Items</h2>
+  <div class="cart-items">
+    <div
+      *ngFor="
+        let cartItem of cartItemDetailed;
+        let i = index;
+        trackBy: trackCartItemBy
+      "
+    >
+      <mat-card class="example-card">
+        <mat-card-title-group>
+          <mat-card-subtitle class="cart-item"
+            ><span>Name : </span>{{ cartItem.item.name }}</mat-card-subtitle
+          >
+          <mat-card-subtitle class="cart-item"
+            ><span>Category : </span
+            >{{ cartItem.item.category.name }}</mat-card-subtitle
+          >
+          <mat-card-subtitle class="cart-item"
+            ><span>Unit Price : ₹</span
+            >{{ cartItem.item.price }}</mat-card-subtitle
+          >
+          <mat-card-subtitle class="cart-item"
+            ><span>Total Price : ₹</span
+            >{{ cartItem.quantity * cartItem.item.price }}</mat-card-subtitle
+          >
+          <mat-card-subtitle class="cart-item"
+            ><span>Quantity : </span>
+            <span class="quantity-buttons">
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="decrementQuantity(cartItem)"
+              >
+                <mat-icon>remove</mat-icon>
+              </button>
+              <span>{{ cartItem.quantity }}</span>
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="incrementQuantity(cartItem)"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+            </span>
+          </mat-card-subtitle>
+          <img mat-card-lg-image [src]="cartItem.item.image" />
+        </mat-card-title-group>
+
+        <button mat-icon-button color="warn" (click)="removeItem(i, cartItem)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card>
+    </div>
+  </div>
+  <div class="btn-valid">
+    <button mat-raised-button color="accent" (click)="proceedToCheckOut()">
+      Proceed To CheckOut
+    </button>
+  </div>
+</div>

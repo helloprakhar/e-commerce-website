@@ -1,0 +1,44 @@
+<button class="back" mat-raised-button color="primary" (click)="backToShop()">
+  <mat-icon>keyboard_return</mat-icon>Back To Shop
+</button>
+
+<div class="global">
+  <div class="image-container">
+    <img [src]="item?.image" calass="item-image" />
+  </div>
+
+  <div class="column">
+    <div class="product-info">
+      <h2><strong>Name:</strong> {{ item?.name }}</h2>
+      <div class="description-container">
+        <div class="description" [class.expand]="isDescriptionExpanded">
+          {{
+            isDescriptionExpanded
+              ? item?.description
+              : item?.description.slice(0, 80)
+          }}
+        </div>
+        
+        <button
+          mat-raised-button
+          *ngIf="item?.description.length > 20"
+          (click)="toggleDescription()"
+        >
+          {{ isDescriptionExpanded ? "Read Less" : "Read More" }}
+        </button>
+      </div>
+      <p class="price"><strong>Price: ₹</strong> {{ item?.price }}</p>
+      <p class="category">
+        <strong>Category:</strong> {{ item?.category.name }}
+      </p>
+      <p class="category-type">
+        <strong>Category Type:</strong> {{ item?.category.categoryType }}
+      </p>
+    </div>
+    <div class="button-container">
+      <button mat-raised-button color="accent" (click)="addToCart()">
+        Add To Cart
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<button class="back" mat-raised-button color="primary" (click)="backToShop()">
+  <mat-icon>keyboard_return</mat-icon>Back To Profile
+</button>
+<div class="previous-orders previous-orders-container">
+  <h2>Previous Orders</h2>
+  <div *ngIf="previousOrders.length === 0">No previous orders</div>
+  <div *ngFor="let order of previousOrders" class="order">
+    <p class="order-info">Order Date: {{ order.timestamp | date:'medium' }}</p>
+    <div class="order-items">
+      <mat-card *ngFor="let cartItem of order.cartItems" class="example-card">
+        <mat-card-title-group>
+          <mat-card-subtitle class="cart-item"
+            ><span>Name: </span>{{ cartItem.item.name }}</mat-card-subtitle
+          >
+          <mat-card-subtitle class="cart-item"
+            ><span>Unit Price: ₹</span
+            >{{ cartItem.item.price }}</mat-card-subtitle
+          >
+          <mat-card-subtitle class="cart-item"
+            ><span>Total Price: ₹</span
+            >{{ cartItem.quantity * cartItem.item.price }}</mat-card-subtitle
+          >
+          <mat-card-subtitle class="cart-item"
+            ><span>Quantity: </span>{{ cartItem.quantity }}</mat-card-subtitle
+          >
+          <img mat-card-lg-image [src]="cartItem.item.image" />
+        </mat-card-title-group>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<button class="back" mat-raised-button color="primary" (click)="backToShop()">
+  <mat-icon>keyboard_return</mat-icon>Back To Shop
+</button>
+
+<div class="welcome-banner">
+  <h1 class="centered">
+    <h2>{{ welcomeMessage }} {{ user?.name }}!</h2>
+    <h3>{{ currentTime }}</h3>
+    Explore your profile and check your order history.
+  </h1>
+</div>
+<div class="profile-container">
+  <h2>User Profile</h2>
+  <div class="profile-info">
+    <div class="profile-item">
+      <mat-icon>person</mat-icon>
+      <span class="profile-label">Name:</span>
+      <span class="profile-value">{{ user?.name }}</span>
+    </div>
+    <div class="profile-item">
+      <mat-icon>email</mat-icon>
+      <span class="profile-label">Email:</span>
+      <span class="profile-value">{{ user?.email }}</span>
+    </div>
+    <div class="profile-item">
+      <mat-icon>location_on</mat-icon>
+      <span class="profile-label">Address:</span>
+      <span class="profile-value">{{ user?.address }}</span>
+    </div>
+  </div>
+  <div class="profile-item">
+    <button
+      mat-icon-button
+      color="primary"
+      class="left-button"
+      (click)="forwardToForm()"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      color="primary"
+      class="right-button"
+      (click)="forwardToOrder()"
+    >
+      <mat-icon>shopping_bag</mat-icon>
+    </button>
+  </div>
+</div>

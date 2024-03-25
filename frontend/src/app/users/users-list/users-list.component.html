@@ -1,0 +1,67 @@
+<div class="btn">
+  <button
+    mat-raised-button
+    color="primary"
+    routerLink="/users/form"
+    class="btn-new"
+  >
+    Create New User
+  </button>
+</div>
+
+<div class="table-container mat-elevation-z8">
+  <table mat-table [dataSource]="users">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef>Address</th>
+      <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+    </ng-container>
+    <ng-container matColumnDef="isAdmin">
+      <th mat-header-cell *matHeaderCellDef>Is Admin?</th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngIf="element.isAdmin">
+          <mat-icon>check_circle_outline</mat-icon>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          class="btn-icon"
+          color="primary"
+          (click)="forwardToForm(element._id)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <td mat-cell *matCellDef="let element">
+        <div>
+          <button
+            mat-icon-button
+            (click)="deleteModal(element)"
+            color="warn"
+            class="btn-icon"
+            [disabled]="element.isAdmin"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
